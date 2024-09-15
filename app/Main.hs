@@ -1,8 +1,9 @@
 module Main where
 
 import qualified Data.Text as T
+import qualified Data.Text.IO as TIO
 import Lib
 
 main :: IO ()
 main = do
-  print (T.pack "Αλεχ")
+  TIO.putStrLn (T.pack "Αλεχ")
