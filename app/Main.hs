@@ -8,7 +8,7 @@ import System.IO
 main :: IO ()
 main = do
   TIO.putStrLn (T.pack "Think of a word:")
-  word <- sGetLine
+  word <- getRandomWord
   TIO.putStrLn (T.pack "Try to guess it:")
   play word
 
