@@ -1,0 +1,4 @@
+* Hangman in different languages.
+
+- This is a command line natural language learning game.
+- Currently supporting English and Greek.
