@@ -9,13 +9,13 @@ main :: IO ()
 main = do
   TIO.putStrLn (T.pack "Think of a word:")
   word <- sGetLine
-  TIO.putStrLn word
---  play word
+  TIO.putStrLn (T.pack "Try to guess it:")
+  play word
 
 sGetLine :: IO T.Text
 sGetLine = do
   x <- getChNoEcho
-  if (x == 'n')
+  if (x == '\n')
     then do
       putChar x
       return (T.pack "")
@@ -31,18 +31,13 @@ getChNoEcho = do
   hSetEcho stdin True
   return x
 
--- match word guess = (T.pack "_____")
--- match word guess =
---   charCheck guess word' `shouldBe` '_'
-
--- play :: T.Text -> IO ()
--- play word = do
---   TIO.putStrLn (T.pack "? ")
---   guess <- sGetLine
---   if guess == (T.pack word)
---     then
---       TIO.putStrLn (T.pack "You got it!!")
---      else do
---        --let matchedWord (T.pack "matched_word")
---        TIO.putStrLn (T.pack "__match")
---        play word
+play :: T.Text -> IO ()
+play word = do
+  TIO.putStrLn (T.pack "? ")
+  guess <- sGetLine
+  if guess == word
+    then
+      TIO.putStrLn (T.pack "You got it!!")
+    else do
+       TIO.putStrLn (match guess word)
+       play word
