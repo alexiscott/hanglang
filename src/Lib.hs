@@ -1,7 +1,6 @@
 module Lib where
 
 import qualified Data.Text as T
-import qualified Data.Text.IO as TIO
 import System.Random (randomRIO)
 
 charCheck :: T.Text -> Char -> Char
@@ -23,8 +22,15 @@ enWords = [(T.pack "apple"), (T.pack "orange"), (T.pack "lime")]
 grWords :: [T.Text]
 grWords = [(T.pack "μηλο"), (T.pack "πορτοκαλι"), (T.pack "λαιμ")]
 
-getRandomWord ::IO T.Text
-getRandomWord = do
-  pos <- randomRIO (1, (length enWords))
-  let word = grWords !! (pos - 1)
+getWords :: String -> [T.Text]
+getWords lang 
+  | lang == "EN" = enWords
+  | lang == "GR" = grWords
+  | otherwise = enWords
+
+getRandomWord :: String -> IO T.Text
+getRandomWord lang = do
+  let dict = getWords lang
+  pos <- randomRIO (1, (length dict))
+  let word = dict !! (pos - 1)
   return word

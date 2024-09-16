@@ -7,8 +7,10 @@ import System.IO
 
 main :: IO ()
 main = do
-  word <- getRandomWord
-  TIO.putStrLn (T.pack "Guess a word that has been randomly selected in LA\n")
+  TIO.putStrLn (T.pack "Choose a language to play in. Either GR for Greek or EN for English.")
+  lang <- getLine
+  word <- getRandomWord lang
+  TIO.putStrLn $ (T.pack "Guess a word that has been randomly selected in ") <> (T.pack lang)
   play word
 
 sGetLine :: IO T.Text
