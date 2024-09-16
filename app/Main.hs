@@ -7,9 +7,8 @@ import System.IO
 
 main :: IO ()
 main = do
-  TIO.putStrLn (T.pack "Think of a word:")
   word <- getRandomWord
-  TIO.putStrLn (T.pack "Try to guess it:")
+  TIO.putStrLn (T.pack "Guess a word that has been randomly selected in LA\n")
   play word
 
 sGetLine :: IO T.Text
@@ -39,5 +38,5 @@ play word = do
     then
       TIO.putStrLn (T.pack "You got it!!")
     else do
-       TIO.putStrLn (match guess word)
+       TIO.putStrLn $ (T.pack "Your guess results in: ") <> (match guess word)
        play word
