@@ -1,13 +1,14 @@
 
 # Table of Contents
 
-1.  [Hangman in different languages.](#orgb3575d5)
+1.  [Hangman in different languages.](#org1a62453)
 
 
-<a id="orgb3575d5"></a>
+<a id="org1a62453"></a>
 
 # Hangman in different languages.
 
 -   This is a command line natural language learning game.
 -   Currently supporting English and Greek.
+-   Suports Nix shell for easy version control.
 
