@@ -11,9 +11,6 @@ main = do
   tree <- testSpec "hspec tests" hspecSuite
   defaultMain tree
 
--- TODO rename guess test variable to not conflict with function name.
--- TODO make utf8 tests more basic.
-
 hspecSuite :: Spec
 hspecSuite = do
   describe "Matches words" $ do
@@ -33,6 +30,8 @@ hspecSuite = do
 
     it "Works with UTF8" $ do
      T.map (charCheck ((T.pack "αλεχ"))) (T.pack "αλεχ") `shouldBe` (T.pack "αλεχ")
+     T.map (charCheck ((T.pack "αλεχ"))) (T.pack "αλεχ") `shouldBe` (T.pack "αλεχ")
+
 
   describe "Solves guesses" $ do
     let guess = charCheck (T.pack "ball")
@@ -40,3 +39,5 @@ hspecSuite = do
       solve (T.pack "guess") (T.pack "guess") `shouldBe` True
       solve (T.map guess (T.pack "ball")) (T.pack "ball") `shouldBe` True
       solve (T.map guess (T.pack "bal")) (T.pack "guess") `shouldBe` False
+    it "Has a 'match' function" $ do
+      match (T.pack "word") (T.pack "word") `shouldBe` (T.pack "word")
